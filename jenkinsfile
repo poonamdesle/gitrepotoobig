@@ -1,14 +1,19 @@
-node{   
-     stage('SCM Checkout'){
-          git ' https://poonam_desle@bitbucket.org/poonam_desle/gitrepotoobig.git'
+pipeline{   
+    agent{
+     label 'master'
      }
-     stage('Compile-Package'){
-          sh "echo Hello from the shell"
+    stages{
+         stage('SCM Checkout'){
+               git ' https://poonam_desle@bitbucket.org/poonam_desle/gitrepotoobig.git'
+         }
+         stage('Compile-Package'){
+                  sh "echo Hello from the shell"
 		  sh chmod +x gitrepo.sh
 		  sh ./gitrepo.sh
-	 }
+	  }
 	 stage('Email Notification'){
 	       emailext body: 'Hi  gi repo size is too big', subject: 'Git Repository size  notification', to: 'poonam1988biraree@gmail.com'
 	 
 	 }
+      } 
 }
