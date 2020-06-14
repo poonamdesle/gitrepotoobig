@@ -1,15 +1,14 @@
 pipeline{   
     agent{
-     label 'master'
+        any
      }
     stages{
          stage('SCM Checkout'){
-               git ' https://poonam_desle@bitbucket.org/poonam_desle/gitrepotoobig.git'
+              checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'd7b006b4-8e75-48ae-b29b-045daf3cbc1c', url: 'https://github.com/poonamdesle/gitrepotoobig.git']]])
          }
          stage('Compile-Package'){
-                  sh "echo Hello from the shell"
-		  sh chmod +x aa.sh
-		  sh ./aa.sh
+                 sh label: '', script: '''chmod +x aa.sh
+                 ./aa.sh'''
 	  }
 	
       } 
