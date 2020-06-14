@@ -8,12 +8,9 @@ pipeline{
          }
          stage('Compile-Package'){
                   sh "echo Hello from the shell"
-		  sh chmod +x gitrepo.sh
-		  sh ./gitrepo.sh
+		  sh chmod +x aa.sh
+		  sh ./aa.sh
 	  }
-	 stage('Email Notification'){
-	       emailext body: 'Hi  gi repo size is too big', subject: 'Git Repository size  notification', to: 'poonam1988biraree@gmail.com'
-	 
-	 }
+	
       } 
 }
