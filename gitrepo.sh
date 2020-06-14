@@ -1,5 +1,3 @@
-#!/bin/bash
-
 uname=$(jq -r '.uname' authinfo.json | base64 -d)
 pwd=$(jq -r '.pwd' authinfo.json | base64 -d)
 client_id=$(jq -r '.client_id' authinfo.json | base64 -d)
